@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block form %}
+<form method="POST" action="/update/{{todo.sno}}" style="max-width: 400px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Update Todo</h2>
+  
+  <label for="title" style="display: block; margin-bottom: 8px; font-weight: bold; color: #555;">Title:</label>
+  <input type="text" id="title" name="title" value="{{ todo.title }}" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; color: #333;">
+  
+  <label for="desc" style="display: block; margin-bottom: 8px; font-weight: bold; color: #555;">Description:</label>
+  <textarea id="desc" name="desc" required style="width: 100%; padding: 10px; height: 100px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; color: #333; resize: vertical;">{{ todo.desc }}</textarea>
+  
+  <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; border: none; border-radius: 4px; color: #fff; font-size: 16px; cursor: pointer;">Update</button>
+</form>
+
+{% endblock form %}
+

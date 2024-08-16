@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+   {% block form %}
+   <div class=container>
+    <form action="/" method="POST"> 
+        <div class="mb-3" my-3>
+            <h1>Add your Todo</h1>
+          <label for="title" class="form-label">title</label>
+          <input type="text" class="form-control" name='title' id="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label">description</label>
+          <input type="textarea" class="form-control" name='desc' id="desc">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+   </div> 
+   
+   <div class=container>
+    <h1>Your Todo</h1>
+    {% if allTodo|length == 0 %}
+                   
+                <div class="alert alert-dark" role="alert">
+                    No Todos found. Add your first todo now!
+                  </div>
+                    {% else %} 
+    <table class="table">
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">title</th>           
+        <th scope="col">discription</th>
+        <th scope="col">date created</th>
+        <th scope="col">Action</th>
+      </tr>
+      {% for todo in allTodo %}
+      <tr>
+            <th >{{loop.index}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.date_created}}</td>
+            <td>
+                <a href="/delete/{{todo.sno}}" type=button  class="btn btn-danger">Delete<a></button>
+              
+                <a href="/update/{{todo.sno}}" type=button class="btn btn-danger">Update<a></button>
+              
+            </td>
+            
+       </tr>
+          
+          {% endfor %}
+        
+
+
+        </thead>
+        
+      </table>
+      {%endif%}
+   </div>
+
+  {% endblock form %}
